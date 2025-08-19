@@ -5,17 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Todo List</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="reminder.js">
+  
+
 </head>
-<body class="bg-blue-100 flex items-center justify-center min-h-screen">
-  <div class="bg-white shadow-lg rounded-2xl p-6 w-full max-w-md">
-    <h1 class="text-2xl font-bold text-center mb-6"><i>Donrichman To-do List App</i></h1>
-    
-    <!-- Input -->
-    <div class="flex mb-4">
-      <input id="taskInput" type="text" placeholder="Enter task"
-        class="flex-1 border rounded-l-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400">
-      <button onclick="addTask()" 
-        class="bg-green-600 text-white px-4 rounded-r-md hover:bg-yellow-900">Add</button>
+<body class="bg-blue-700 flex items-center justify-center min-h-screen">
+  <div class="bg-blue-500 shadow-lg rounded-2xl p-6 w-full max-w-md">
+    <h1 class="text-2xl font-bold text-center mb-5"><i>Donrichman To-do-List App</i></h1>
+    <!-- Input area -->
+    <div class="flex gap-2 mb-4">
+      <input 
+        type="text" 
+        id="taskInput" 
+        placeholder="Please Enter a Task..." 
+        class="flex-1 border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+      >
+      <button 
+        id="addBtn" 
+        class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-900 transition"
+      >
+        Add
+      </button>
     </div>
 
     <!-- Task List -->
@@ -117,6 +127,7 @@
         localStorage.removeItem("tasks");
       }
     }
-  </script>
+    </script>  
+
 </body>
 </html>
