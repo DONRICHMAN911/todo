@@ -1,0 +1,119 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #d7e5e6;
+  color: #011b1b;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+  min-height: 100vh;
+  transition: background 0.3s, color 0.3s;
+}
+
+.container {
+  background: rgb(240, 231, 231);
+  padding: 20px;
+  border-radius: 12px;
+  width: 400px;
+  box-shadow: 0 4px 8px rgba(4, 4, 4, 0.1);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.task-input {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.task-input input,
+.task-input button {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #357489;
+}
+
+.task-input input {
+  flex: 1;
+}
+
+.task-input button {
+  background: #51b36b;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.task-input button:hover {
+  background: #616e17;
+}
+
+.counters {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  padding: 8px 10px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+}
+
+li.completed span.task-text {
+  text-decoration: line-through;
+  color: #0c0000;
+}
+
+.reminder {
+  font-size: 0.85rem;
+  color: #89a2a2;
+  margin-left: 10px;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+button.danger {
+  background: #e86051;
+  color: rgb(253, 253, 253);
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button.danger:hover {
+  background: #616e17;
+}
+
+/* Dark mode */
+body.dark {
+  background: #020011;
+  color: #dddddd;
+}
+
+body.dark .container {
+  background: #171e31;
+}
+
+body.dark li {
+  background: #313134;
+}
+

@@ -1,133 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Todo List</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="reminder.js">
-  
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>To-Do List </title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
-<body class="bg-blue-700 flex items-center justify-center min-h-screen">
-  <div class="bg-blue-500 shadow-lg rounded-2xl p-6 w-full max-w-md">
-    <h1 class="text-2xl font-bold text-center mb-5"><i>Donrichman To-do-List App</i></h1>
-    <!-- Input area -->
-    <div class="flex gap-2 mb-4">
-      <input 
-        type="text" 
-        id="taskInput" 
-        placeholder="Please Enter a Task..." 
-        class="flex-1 border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-      >
-      <button 
-        id="addBtn" 
-        class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-900 transition"
-      >
-        Add
-      </button>
+<body>
+  <div class="container">
+    <h1>Donrichman To-Do List</h1>
+
+    <!-- Task input -->
+    <div class="task-input">
+      <input type="text" id="taskInput" placeholder="Please enter a task..." />
+      <input type="time" id="reminderTime" />
+      <button id="addTaskBtn">Add</button>
     </div>
 
-    <!-- Task List -->
-    <ul id="taskList" class="space-y-3 mb-4"></ul>
+    <!-- Counters -->
+    <div class="counters">
+      <span id="pendingCount">🕓Pending: 0</span>
+      <span id="completedCount">✅Completed: 0</span>
+    </div>
 
-    <!-- Clear All Button -->
-    <button onclick="clearAllTasks()" 
-      class="w-full bg-red-600 text-white py-2 rounded-lg hover:bg-red-900"><i>Clear All</i></button>
+    <!-- Task list -->
+    <ul id="taskList"></ul>
+
+    <!-- Buttons -->
+    <div class="actions">
+      <button id="clearAllBtn" class="danger">Clear All</button>
+      <button id="toggleDarkBtn"> ☀️ <> 🌙 </button>
+    </div>
   </div>
 
-  <script>
-    const taskInput = document.getElementById("taskInput");
-    const taskList = document.getElementById("taskList");
-
-    // Load tasks from localStorage on page load
-    document.addEventListener("DOMContentLoaded", loadTasks);
-
-    function saveTasks() {
-      const tasks = [];
-      document.querySelectorAll("#taskList li").forEach(li => {
-        tasks.push({
-          text: li.querySelector("span").textContent,
-          completed: li.querySelector("span").classList.contains("line-through")
-        });
-      });
-      localStorage.setItem("tasks", JSON.stringify(tasks));
-    }
-
-    function loadTasks() {
-      const storedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
-      storedTasks.forEach(task => addTask(task.text, task.completed));
-    }
-
-    function addTask(taskText = null, completed = false) {
-      const text = taskText || taskInput.value.trim();
-      if (text === "") return;
-
-      const li = document.createElement("li");
-      li.className = "flex items-center justify-between bg-gray-50 p-3 rounded-md shadow-sm";
-
-      // Task text
-      const span = document.createElement("span");
-      span.textContent = text;
-      span.className = "flex-1";
-      if (completed) {
-        span.classList.add("line-through", "text-gray-400");
-      }
-
-      // Action buttons
-      const actions = document.createElement("div");
-      actions.className = "flex gap-2 ml-4";
-
-      // Complete button
-      const completeBtn = document.createElement("button");
-      completeBtn.innerHTML = "✔";
-      completeBtn.className = "bg-blue-500 text-white p-2 rounded hover:bg-blue-900";
-      completeBtn.onclick = () => {
-        span.classList.toggle("line-through");
-        span.classList.toggle("text-gray-400");
-        saveTasks();
-      };
-
-      // Edit button
-      const editBtn = document.createElement("button");
-      editBtn.innerHTML = "✎";
-      editBtn.className = "bg-yellow-500 text-white p-2 rounded hover:bg-yellow-900";
-      editBtn.onclick = () => {
-        const newTask = prompt("Edit task:", span.textContent);
-        if (newTask) {
-          span.textContent = newTask;
-          saveTasks();
-        }
-      };
-
-      // Delete button
-      const deleteBtn = document.createElement("button");
-      deleteBtn.innerHTML = "🗑";
-      deleteBtn.className = "bg-red-500 text-white p-2 rounded hover:bg-red-900";
-      deleteBtn.onclick = () => {
-        li.remove();
-        saveTasks();
-      };
-
-      actions.append(completeBtn, editBtn, deleteBtn);
-      li.append(span, actions);
-      taskList.appendChild(li);
-
-      if (!taskText) {
-        taskInput.value = "";
-      }
-
-      saveTasks();
-    }
-
-    // Clear all tasks
-    function clearAllTasks() {
-      if (confirm("Are you sure you want to delete all tasks?")) {
-        taskList.innerHTML = "";
-        localStorage.removeItem("tasks");
-      }
-    }
-    </script>  
-
+  <script src="js/script.js"></script>
 </body>
-</html>
+</html
+
+
+
