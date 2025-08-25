@@ -1,6 +1,6 @@
 body {
   font-family: Arial, sans-serif;
-  background: #d7e5e6;
+  background: #b6d4d6;
   color: #011b1b;
   display: flex;
   justify-content: center;
@@ -117,3 +117,20 @@ body.dark li {
   background: #313134;
 }
 
+@media (max-width: 480px) {
+  .container {
+    width: 100%;
+    max-width: 95%;
+    padding: 15px;
+  }
+
+  .task-input {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .task-input input,
+  .task-input button {
+    width: 100%;
+  }
+}
